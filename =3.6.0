@@ -1,0 +1,10 @@
+Collecting flake8
+  Downloading flake8-3.9.2-py2.py3-none-any.whl (73 kB)
+Collecting pycodestyle<2.8.0,>=2.7.0
+  Downloading pycodestyle-2.7.0-py2.py3-none-any.whl (41 kB)
+Collecting pyflakes<2.4.0,>=2.3.0
+  Downloading pyflakes-2.3.1-py2.py3-none-any.whl (68 kB)
+Collecting mccabe<0.7.0,>=0.6.0
+  Using cached mccabe-0.6.1-py2.py3-none-any.whl (8.6 kB)
+Installing collected packages: pycodestyle, pyflakes, mccabe, flake8
+Successfully installed flake8-3.9.2 mccabe-0.6.1 pycodestyle-2.7.0 pyflakes-2.3.1
