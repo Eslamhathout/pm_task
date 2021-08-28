@@ -82,5 +82,5 @@ class Dog(models.Model):
         return reverse('dog-detail', args=[str(self.id)])
 
     def __str__(self):
-        return f'{self.id}, {self.pet.name}'
+        return f'{self.id}, {self.name}'
 

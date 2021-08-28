@@ -3,7 +3,6 @@ from catalog.models import Pet, Dog, Breed
 
 class PetSerializer(serializers.ModelSerializer):
     """Serializer for Pet objects"""
-
     class Meta:
         model = Pet
         fields = ('id', 'pet_type', 'pet_feature')
@@ -12,7 +11,6 @@ class PetSerializer(serializers.ModelSerializer):
 
 class BreedSerializer(serializers.ModelSerializer):
     """Serializer for Breed objects"""
-
     class Meta:
         model = Breed
         fields = ('id', 'name', 'country')
@@ -21,7 +19,6 @@ class BreedSerializer(serializers.ModelSerializer):
 
 class DogSerializer(serializers.ModelSerializer):
     """Serializer for dog objects"""
-    breed = serializers.PrimaryKeyRelatedField(queryset=Breed.objects.all())
     class Meta:
         model = Dog
         fields = ('id', 'name', 'price', 'age','breed', 'status', 'likes', 'pet')
