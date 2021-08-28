@@ -1,8 +1,8 @@
-from rest_framework import viewsets, mixins
-from cart.models import Cart
-from rest_framework import generics, authentication, permissions
-from rest_framework.authtoken.views import ObtainAuthToken
 from cart import serializers
+from cart.models import Cart
+from rest_framework import (authentication, generics, mixins, permissions,
+                            viewsets)
+from rest_framework.authtoken.views import ObtainAuthToken
 
 
 class CartViewSet(viewsets.ModelViewSet):
@@ -15,3 +15,7 @@ class CartViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """Retrieve the carts for auth users"""
         return self.queryset.filter(user=self.request.user)
+
+    def perform_create(self, serializers):
+        """Create a new Cart order """
+        serializer.save(user=self.request.user)

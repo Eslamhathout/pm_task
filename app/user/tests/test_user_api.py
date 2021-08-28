@@ -9,15 +9,16 @@ from rest_framework import status
 CREATE_USER_URL = reverse('user:create')
 
 
-def create_user(**param): 
+def create_user(**param):
     return get_user_model().objects.create_user(**params)
+
 
 class PublicUserApiTests(TestCase):
     """Test the users API (public)"""
 
     def setUp(self):
         self.client = APIClient()
-    
+
     def test_create_valid_user_success(self):
         """Test creating user with valid payload"""
 
@@ -31,28 +32,3 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         user = get_user_model().objects.get(**res.data)
         self.assertTrue(user.check_password(payload['password']))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

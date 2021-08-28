@@ -6,7 +6,8 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from cart.models import Cart
-
+from catalog.models import Dog
+from model_mommy import mommy
 from cart.serializers import CartSerializer
 
 
@@ -15,9 +16,11 @@ CART_URL = reverse('cart:cart-list')
 
 def sample_cart(user, **params):
     """Create and return a sample cart"""
+    dog = mommy.make(Dog)
     defaults = {
         'delivery_method': 'Nearest Pickup',
-        'payment_method': 'CoD'
+        'payment_method': 'CoD',
+        'dog': dog
     }
     #For updating defaults dict
     defaults.update(params)
@@ -45,10 +48,9 @@ class PrivateCartAPITests(TestCase):
         res = self.client.get(CART_URL)
 
         carts = Cart.objects.all()
-        serializer = CartSerializer(carts, many=True)
+        serializer = CartSerializer(carts)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(res.data, serializer.data)
 
     def test_carts_limited_to_user(self):
         """Test retriving carts for user"""
